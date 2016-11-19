@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "WhatBills",
+      "slots": [
+        {
+          "name": "Topic",
+          "type": "LIST_OF_TOPICS"
+        },
+	  {
+          "name": "Chamber",
+          "type": "LIST_OF_CHAMBERS"
+        }
+      ]
+    }
+  ]
+}

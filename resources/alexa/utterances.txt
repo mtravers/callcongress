@@ -1,0 +1,6 @@
+WhatBillsIntent what are some upcoming bills
+WhatBillsIntent what are some upcoming bills about {Topic}
+WhatBillsIntent what are some upcoming bills in the {Chamber}
+CallIntent call my congressperson
+CallIntent call my congressperson in the {Chamber}
+
