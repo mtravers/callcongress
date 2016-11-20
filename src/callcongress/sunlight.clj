@@ -6,13 +6,12 @@
             )
   )
 
-(def api-url "http://congress.api.sunlightfoundation.com/upcoming_bills?order=legislative_day")
+;;; TODO for some reason :query-params isn't working
 
-;;; better
-(def api-url "http://congress.api.sunlightfoundation.com/bills?order=last_action_at")
+(def api-base "http://congress.api.sunlightfoundation.com")
 
 (defn get-upcoming []
-  (let [resp (client/get api-url
+  (let [resp (client/get (str api-base "/bills?order=last_action_at")
                          {})]
     (when-not (= 200 (:status resp))
       (throw (Error. resp)))
@@ -39,4 +38,19 @@
         (if (= (bill-id (first rst)) id)
           (second rst)
           (recur (rest rst)))))))
+
+;;; Distrcts
+;;; Can return >1
+
+(defn get-districts [zip]
+  (let [resp (client/get (str api-base "/districts/locate?zip=" zip))]
+    (when-not (= 200 (:status resp))
+      (throw (Error. resp)))
+    (:results (json/read-str (:body resp) :key-fn keyword))))
+
+(defn get-legislators [zip]
+  (let [resp (client/get (str api-base "/legislators/locate?zip=" zip))]
+    (when-not (= 200 (:status resp))
+      (throw (Error. resp)))
+    (:results (json/read-str (:body resp) :key-fn keyword))))
 

@@ -23,12 +23,29 @@
 
 (def last-bill-slot "LAST_BILL")
 
+;;; TODO stub
+(defn user-zip [user]
+  "94044")
+
+(defn representative-text [user chamber]
+  (let [zip (user-zip user)
+        legislators (filter #(= (:chamber %) chamber)
+                            (sunlight/get-legislators zip))
+        legislator (first legislators)]
+    (format "You can call %s %s at %s"
+            (or (:nickname legislator)
+                (:first_name legislator))
+            (:last_name legislator)
+            (:phone legislator))))
+
 (defn call-rep [session session-map]
   (let [bill (sunlight/get-bill (get session-map (keyword last-bill-slot)))
-        chamber (keyword (:chamber bill))
+        chamber (or (get session-map :Chamber)
+                    (keyword (:chamber bill)))
         user (user-id session)
-        text (reps/representative-text user chamber)
+        text (representative-text user chamber)
         speech (mk-plain-speech text)]
+    (set-session-slot session "DEBUG" (str session-map))
     (SpeechletResponse/newTellResponse speech)))
 
 (defintent :CallRepIntent call-rep)
