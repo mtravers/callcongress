@@ -2,9 +2,17 @@
 
 Alexa skill to help people find out about current legislation and contact their congresspeople
 
-## Usage
+## Deployment
 
-Uploaded to AWS Lambda
+### Upload to AWS Lambda
+
+https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/CallCongress/$LATEST?tab=code
+
+### Test out on Alexa
+
+https://developer.amazon.com/edw/home.html#/skill/amzn1.ask.skill.211aa2b8-b06f-4e2b-bdc1-8b0fa87673cd/en_US/testing
+
+
 
 ## License
 
