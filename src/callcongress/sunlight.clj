@@ -2,6 +2,7 @@
   (:require [clj-http.client :as client]
             [clojure.data.json :as json]
             [clojure.string :as str]
+            [callcongress.utils :as u]
             )
   )
 
@@ -26,6 +27,9 @@
 
 (defn bill-id [bill]
   (:bill_id bill))
+
+(defn get-bill [id]
+  (u/cl-find id (get-upcoming) :key bill-id))
 
 (defn next-bill [id]
   (let [raw (get-upcoming)]

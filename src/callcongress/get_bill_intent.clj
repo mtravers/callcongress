@@ -1,5 +1,6 @@
 (ns callcongress.get-bill-intent
   (:require [com.climate.boomhauer.intent-handler :refer [defintent]]
+            [callcongress.call-rep-intent :as call-rep-intent]
             [callcongress.sunlight :as sunlight]
             )
   (:import [com.amazon.speech.speechlet SpeechletResponse]
@@ -27,3 +28,11 @@
     (SpeechletResponse/newAskResponse speech reprompt)))
 
 (defintent :WhatBillsIntent get-bills)
+
+(defintent :AMAZON.NextIntent get-bills)
+
+(defintent :AMAZON.NoIntent get-bills)
+
+;;; In response to call question
+(defintent :AMAZON.YesIntent call-rep-intent/call-rep)
+  

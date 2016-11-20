@@ -1,17 +1,43 @@
 {
-  "intents": [
-    {
-      "intent": "WhatBills",
-      "slots": [
-        {
-          "name": "Topic",
-          "type": "LIST_OF_TOPICS"
-        },
-	  {
-          "name": "Chamber",
-          "type": "LIST_OF_CHAMBERS"
-        }
-      ]
-    }
-  ]
+    "intents": [
+	{
+	    "intent": "WhatBillsIntent",
+	    "slots": [
+		{
+		    "name": "Topic",
+		    "type": "LIST_OF_TOPICS"
+		},
+		{
+		    "name": "Chamber",
+		    "type": "LIST_OF_CHAMBERS"
+		}
+	    ]
+	},
+	{
+	    "intent": "CallRepIntent",
+	    "slots": [
+		{
+		    "name": "Representative",
+		    "type": "LIST_OF_REPRESENTATIVES"
+		},
+		{
+		    "name": "Chamber",
+		    "type": "LIST_OF_CHAMBERS"
+		}
+	    ]
+	},
+	{
+	    "intent": "AMAZON.NextIntent"
+	},
+	{
+	    "intent": "AMAZON.YesIntent"
+	}
+	,
+	{
+	    "intent": "AMAZON.NoIntent"
+	},
+	{
+	    "intent": "AMAZON.StopIntent"
+	}
+    ]
 }

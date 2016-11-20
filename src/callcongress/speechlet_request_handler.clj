@@ -4,11 +4,8 @@
     :extends com.amazon.speech.speechlet.lambda.SpeechletRequestStreamHandler
     :init init
     :constructors {[] [com.amazon.speech.speechlet.Speechlet java.util.Set]})
-
-  (:use [callcongress.get-bill-intent]
-;        [callcongress.call-rep-intent]
-                                       )
-
+  (:require [callcongress.get-bill-intent]
+            [callcongress.call-rep-intent])
   (:import [com.climate.boomhauer BoomhauerSpeechlet]))
 
 (defn -init []
