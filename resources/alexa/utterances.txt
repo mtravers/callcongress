@@ -6,6 +6,9 @@ CallRepIntent call my congressperson in the {Chamber}
 CallRepIntent call my congressman
 CallRepIntent call my congressman in the {Chamber}
 CallRepIntent call my representative
-CallRepIntent call my senator
+CallSenatorIntent call my senator
+SetZipIntent set my zip to {Zip}
+SetZipIntent set zip to {Zip}
+SetZipIntent my zip code is {Zip}
 
 

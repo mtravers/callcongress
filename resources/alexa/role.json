@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+	{
+	    "Effect": "Allow",
+	    "Action": [
+		"logs:CreateLogGroup",
+		"logs:CreateLogStream",
+		"logs:PutLogEvents"
+	    ],
+	    "Resource": "arn:aws:logs:*:*:*"
+	},
+	{
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:Scan",
+                "dynamodb:UpdateItem"
+            ],
+            "Resource": "arn:aws:dynamodb:us-east-1:316385792873:table/congress_user_prefs"
+        }
+    ]
+}

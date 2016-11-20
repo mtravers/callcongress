@@ -27,6 +27,16 @@
 	    ]
 	},
 	{
+	    "intent": "SetZipIntent",
+	    "slots": [
+		{
+		    "name": "Zip",
+		    "type": "AMAZON.NUMBER"
+		}
+	    ]
+	},
+
+	{
 	    "intent": "AMAZON.NextIntent"
 	},
 	{

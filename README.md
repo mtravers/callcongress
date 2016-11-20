@@ -12,7 +12,10 @@ https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/CallCongr
 
 https://developer.amazon.com/edw/home.html#/skill/amzn1.ask.skill.211aa2b8-b06f-4e2b-bdc1-8b0fa87673cd/en_US/testing
 
+### Database
 
+An AWS DynamoDB table: https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=congress_user_prefs
+arn:aws:dynamodb:us-east-1:316385792873:table/congress_user_prefs
 
 ## License
 
