@@ -1,0 +1,6 @@
+- manage secret AWS credentials
+- dynamodb breaks json parsing; version skew issue?
+- all dialog flow
+- handle multiple districts for zip and >1 senator
+- issue filtering
+- cache bill data and others for responsiveness, doesn't change that much
