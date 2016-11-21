@@ -2,7 +2,7 @@
   (:require [com.climate.boomhauer.intent-handler :refer [defintent]]
             [callcongress.sunlight :as sunlight]
             [callcongress.reps :as reps]
-;            [callcongress.dynfar :as dyn]
+            [callcongress.dynfar :as dyn]
             )
   (:import [com.amazon.speech.speechlet SpeechletResponse]
            [com.amazon.speech.ui PlainTextOutputSpeech Reprompt]))
@@ -25,9 +25,7 @@
 (def last-bill-slot "LAST_BILL")
 
 (defn user-zip [user]
-                                        ;  (dyn/read-zip user)
-  "60202"
-  )
+  (dyn/read-zip user))
 
 ;;; for demo
 (def default-legislator

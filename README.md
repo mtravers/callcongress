@@ -4,9 +4,18 @@ Alexa skill to help people find out about current legislation and contact their 
 
 ## Deployment
 
+### Build
+> lein uberjar
+
+
 ### Upload to AWS Lambda
 
 https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/CallCongress/$LATEST?tab=code
+
+### Upload interaction model to AWS
+
+
+
 
 ### Test out on Alexa
 

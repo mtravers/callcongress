@@ -5,7 +5,8 @@
     :init init
     :constructors {[] [com.amazon.speech.speechlet.Speechlet java.util.Set]})
   (:require [callcongress.get-bill-intent]
-            [callcongress.call-rep-intent])
+            [callcongress.call-rep-intent]
+            [callcongress.set-zip-intent])
   (:import [com.climate.boomhauer BoomhauerSpeechlet]))
 
 (defn -init []

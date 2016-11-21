@@ -27,6 +27,15 @@
 	    ]
 	},
 	{
+	    "intent": "CallSenatorIntent",
+	    "slots": [
+		{
+		    "name": "Representative",
+		    "type": "LIST_OF_REPRESENTATIVES"
+		}
+	    ]
+	},
+	{
 	    "intent": "SetZipIntent",
 	    "slots": [
 		{
