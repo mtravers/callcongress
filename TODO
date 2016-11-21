@@ -1,6 +1,8 @@
-- manage secret AWS credentials
-- dynamodb breaks json parsing; version skew issue?
+- Real dates
+- Stop intent gets error
+- error with blank DB key, seems to happen on first interaction only?
 - all dialog flow
 - handle multiple districts for zip and >1 senator
 - issue filtering
 - cache bill data and others for responsiveness, doesn't change that much
+- startup time
