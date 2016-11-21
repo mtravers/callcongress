@@ -42,14 +42,16 @@
 
 (defn set-zip [session session-map]
   (let [user (user-id session)
-        zip (clean-zip (str (get session-map :Zip))) ;TODO leading zeros?
+        zip (clean-zip (str (get session-map :Zip)))
         ;; TODO might as well return legislator
         speech (mk-plain-speech
                 (if zip
                   (format "I have your zip as %s" (say-zip zip))
                   (format "Sorry I couldn't understand")))
-        reprompt (if zip (mk-plain-reprompt "Call your congressman?"))
-        ]
+        reprompt (mk-plain-reprompt
+                  (if zip
+                    "Call your congressman?"
+                    "Try again"))]
     (dyn/write-zip user zip)
     (SpeechletResponse/newAskResponse speech reprompt)))
 
