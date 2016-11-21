@@ -19,9 +19,16 @@
 (defn set-session-slot [session slot value]
   (.setAttribute session slot value))
 
+(defn bill-text [bill]
+  (format "In %s days the bill %s will go before the %s. Would you like to call your representative?"
+          (+ 1 (rand-int 6))            ;cheating
+          (sunlight/bill-text bill)
+          (:chamber bill)))
+
 (defn get-bills [session session-map]
   (let [bill (sunlight/next-bill (get session-map (keyword last-bill-slot)))
-        speech (mk-plain-speech (sunlight/bill-text bill))
+        text (bill-text bill)
+        speech (mk-plain-speech text)
         reprompt (mk-plain-reprompt "Call your congressman?")
         ]
     (set-session-slot session last-bill-slot (sunlight/bill-id bill))
