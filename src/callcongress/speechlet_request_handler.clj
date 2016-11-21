@@ -10,5 +10,5 @@
 
 (defn -init []
   [[(BoomhauerSpeechlet.
-      {:launch-message "Welcome to Call Congress"
+      {:launch-message "Hello. Welcome to Call Congress. You can ask me for an upcoming bill or how to call your representative."
        :card-title "Call Congress"}), #{}] nil])
