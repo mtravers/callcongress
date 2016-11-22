@@ -10,8 +10,9 @@ WhatBillsIntent what are some upcoming bills in the {Chamber}
 CallRepIntent call my congressperson
 CallRepIntent call my congressperson in the {Chamber}
 CallRepIntent call my congressman
-CallRepIntent call my congresswoman
 CallRepIntent call my congressman in the {Chamber}
+CallRepIntent call my congresswoman
+CallRepIntent call my congresswoman in the {Chamber}
 CallRepIntent call my representative
 CallRepIntent call my senator
 CallRepIntent call my rep

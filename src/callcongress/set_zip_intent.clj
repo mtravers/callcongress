@@ -8,9 +8,6 @@
   (:import [com.amazon.speech.speechlet SpeechletResponse]
            [com.amazon.speech.ui PlainTextOutputSpeech Reprompt]))
 
-(defn say-zip [zip]
-  (str/join " " (into [] zip)))
-
 (defn numeric? [s]
   (every? #(and (>= (compare % \0) 0)
                 (>= (compare \9 %) 0))
@@ -31,10 +28,9 @@
   (let [user (user-id session)
         zip (clean-zip (str (get session-map :Zip)))
         ;; TODO might as well return legislator
-        speech (mk-plain-speech
-                (if zip
-                  (format "I have your zip as %s" (say-zip zip))
-                  (format "Sorry I couldn't understand")))
+        speech (if zip
+                 (mk-ssml-speech [:speak "I have your zip as " [:say-as {:interpret-as "digits"} zip]])
+                 (mk-plain-speech "Sorry I couldn't understand"))
         reprompt (mk-plain-reprompt
                   (if zip
                     "Call your congressman?"

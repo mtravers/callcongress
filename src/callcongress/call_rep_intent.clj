@@ -36,6 +36,7 @@
         speech (mk-plain-speech text)]
     (SpeechletResponse/newTellResponse speech)))
 
+;;; TODO this hack apparently not working
 (defn call-senator [session session-map]
   (call-rep session (assoc session-map :Chamber "senate")))
 
