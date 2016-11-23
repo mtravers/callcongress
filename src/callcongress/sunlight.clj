@@ -11,7 +11,7 @@
 (def api-base "http://congress.api.sunlightfoundation.com")
 
 (defn get-upcoming []
-  (let [resp (client/get (str api-base "/bills?order=last_action_at")
+  (let [resp (client/get (str api-base "/bills?history.active=true&order=last_action_at")
                          {})]
     (when-not (= 200 (:status resp))
       (throw (Error. resp)))
