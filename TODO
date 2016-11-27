@@ -1,5 +1,4 @@
-- Real dates
-- Stop intent gets error
+- Real dates (maybe not)
 - error with blank DB key, seems to happen on first interaction only?
 - all dialog flow
 - handle multiple districts for zip and >1 senator

@@ -24,6 +24,10 @@
     (set-session-slot session last-bill-slot (sunlight/bill-id bill))
     (SpeechletResponse/newAskResponse speech reprompt)))
 
+(defn stop [session session-map]
+  (let [speech (mk-plain-speech "Thanks for being politically involved. Goodbye")]
+    (SpeechletResponse/newTellResponse speech)))
+
 (defintent :WhatBillsIntent get-bills)
 
 (defintent :AMAZON.NextIntent get-bills)
@@ -32,4 +36,6 @@
 
 ;;; In response to call question
 (defintent :AMAZON.YesIntent call-rep-intent/call-rep)
+
+(defintent :AMAZON.StopIntent stop)
   
