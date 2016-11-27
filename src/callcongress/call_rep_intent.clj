@@ -3,6 +3,7 @@
             [callcongress.sunlight :as sunlight]
             [callcongress.reps :as reps]
             [callcongress.dynfar :as dyn]
+            [callcongress.set-zip-intent :as set-zip-intent]
             )
   (:use callcongress.alexa-utils)
   (:import [com.amazon.speech.speechlet SpeechletResponse]
@@ -32,10 +33,14 @@
                     (keyword (:chamber bill))
                     "house")
         user (user-id session)
-        text (representative-text user chamber)
-        speech (mk-plain-speech text)]
-    (SpeechletResponse/newTellResponse speech)))
-
+        zip (user-zip user)]
+    (if zip
+        (let [text (representative-text user chamber)
+              speech (mk-plain-speech text)]
+          (SpeechletResponse/newTellResponse speech))
+        ;; no zip
+        (set-zip-intent/prompt-for-zip session session-map))))
+        
 ;;; TODO this hack apparently not working
 (defn call-senator [session session-map]
   (call-rep session (assoc session-map :Chamber "senate")))

@@ -1,7 +1,6 @@
 (ns callcongress.set-zip-intent
   (:require [clojure.string :as str]
             [com.climate.boomhauer.intent-handler :refer [defintent]]
-            [callcongress.call-rep-intent :as call-rep-intent]
             [callcongress.dynfar :as dyn]
             )
   (:use callcongress.alexa-utils)
@@ -23,6 +22,11 @@
              (= \2 (first zip)))
         (subs zip 1)
         true false))
+
+(defn prompt-for-zip [session session-map]
+  (let [speech (mk-ssml-speech [:speak "I need to know your zip code. Please say, set my zip code to " [:say-as {:interpret-as "digits"} "11111"]])
+        reprompt (mk-plain-reprompt "Sorry I couldn't understand")]
+    (SpeechletResponse/newAskResponse speech reprompt)))
 
 (defn set-zip [session session-map]
   (let [user (user-id session)
