@@ -1,7 +1,8 @@
 (ns callcongress.get-bill-intent
   (:require [com.climate.boomhauer.intent-handler :refer [defintent]]
             [callcongress.call-rep-intent :as call-rep-intent]
-            [callcongress.sunlight :as sunlight]
+            [callcongress.house :as house]
+            [callcongress.utils :as u]
             )
   (:use callcongress.alexa-utils)
   (:import [com.amazon.speech.speechlet SpeechletResponse]
@@ -10,18 +11,17 @@
 (def last-bill-slot "LAST_BILL")
 
 (defn bill-text [bill]
-  (format "In %s days the bill %s will go before the %s. Would you like to call your representative?"
-          (+ 1 (rand-int 6))            ;cheating
-          (sunlight/bill-text bill)
-          (:chamber bill)))
+  (format "%s %s is scheduled to before the house soon. Would you like to call your representative?"
+          (:text bill)
+          (:number bill)))
 
 (defn get-bills [session session-map]
-  (let [bill (sunlight/next-bill (get session-map (keyword last-bill-slot)))
+  (let [bill (house/next-bill (u/safe-parse-integer (get session-map (keyword last-bill-slot))))
         text (bill-text bill)
         speech (mk-plain-speech text)
         reprompt (mk-plain-reprompt "Call your congressman?")
         ]
-    (set-session-slot session last-bill-slot (sunlight/bill-id bill))
+    (set-session-slot session last-bill-slot (:n bill))
     (SpeechletResponse/newAskResponse speech reprompt)))
 
 (defn stop [session session-map]

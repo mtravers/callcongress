@@ -5,3 +5,7 @@
 - issue filtering
 - cache bill data and others for responsiveness, doesn't change that much
 - startup time
+- Use Twilio to actually make the call!
+   https://github.com/vitalreactor/twilio-rest
+   "click to call" is the Twilio magic for connecting two phones (for us, user & congressperson)
+   https://www.twilio.com/docs/tutorials/walkthrough/click-to-call/php/laravel#what-we-will-learn
