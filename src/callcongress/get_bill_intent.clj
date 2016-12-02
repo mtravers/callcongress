@@ -10,17 +10,21 @@
 
 (def last-bill-slot "LAST_BILL")
 
-(defn bill-text [bill]
-  (format "%s %s is scheduled to before the house soon. Would you like to call your representative?"
-          (:text bill)
-          (:number bill)))
 
+(defn bill-ssml [bill]
+  [:speak
+   "The bill"
+   ;; Wish there was a quote speech markup!
+   [:s (:title bill)
+    [:break {:strength "medium"}]
+    [:say-as {:interpret-as "digits"} (:number bill)]]
+   "is scheduled for consideration in the House this week."
+   [:s "Would you like to call your representative?"]])   
+    
 (defn get-bills [session session-map]
   (let [bill (house/next-bill (u/safe-parse-integer (get session-map (keyword last-bill-slot))))
-        text (bill-text bill)
-        speech (mk-plain-speech text)
-        reprompt (mk-plain-reprompt "Call your congressman?")
-        ]
+        speech (mk-ssml-speech (bill-ssml bill))
+        reprompt (mk-plain-reprompt "Call your representative?")]
     (set-session-slot session last-bill-slot (:n bill))
     (SpeechletResponse/newAskResponse speech reprompt)))
 

@@ -14,18 +14,20 @@
 (defn user-zip [user]
   (dyn/read-zip user))
 
-(defn representative-text [user chamber]
+(defn representative-ssml [user chamber]
   (let [zip (user-zip user)
         legislators (filter #(= (:chamber %) chamber)
                             (sunlight/get-legislators zip))
-        legislator(first legislators)]
+        legislator (first legislators)]
     (if legislator
-      (format "You can call %s %s at %s"
-              (or (:nickname legislator)
-                  (:first_name legislator))
-              (:last_name legislator)
-              (:phone legislator))
-      "Sorry, I couldn't find a legislator")))
+      [:speak
+       "You can call"
+       (or (:nickname legislator)
+           (:first_name legislator))
+       (:last_name legislator)
+       [:say-as {:interpret-as "telephone"} (:phone legislator)]]
+      [:speak "Sorry, I couldn't find a legislator"])))
+
 
 (defn call-rep [session session-map]
   (let [bill (sunlight/get-bill (get session-map (keyword last-bill-slot)))
@@ -35,8 +37,7 @@
         user (user-id session)
         zip (user-zip user)]
     (if zip
-        (let [text (representative-text user chamber)
-              speech (mk-plain-speech text)]
+        (let [speech (mk-ssml-speech (representative-ssml user chamber))]
           (SpeechletResponse/newTellResponse speech))
         ;; no zip
         (set-zip-intent/prompt-for-zip session session-map))))

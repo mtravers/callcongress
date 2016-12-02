@@ -1,10 +1,9 @@
-- Real dates (maybe not)
-- error with blank DB key, seems to happen on first interaction only?
-- all dialog flow
+- find better data including senate bills
 - handle multiple districts for zip and >1 senator
 - issue filtering
 - cache bill data and others for responsiveness, doesn't change that much
 - startup time
+- dialog flow probably still needs work
 - Use Twilio to actually make the call!
    https://github.com/vitalreactor/twilio-rest
    "click to call" is the Twilio magic for connecting two phones (for us, user & congressperson)

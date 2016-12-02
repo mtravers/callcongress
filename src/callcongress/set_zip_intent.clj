@@ -37,7 +37,7 @@
                  (mk-plain-speech "Sorry I couldn't understand"))
         reprompt (mk-plain-reprompt
                   (if zip
-                    "Call your congressman?"
+                    "Call your representative?"
                     "Try again"))]
     (dyn/write-zip user zip)
     (SpeechletResponse/newAskResponse speech reprompt)))
