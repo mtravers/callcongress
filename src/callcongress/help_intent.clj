@@ -11,4 +11,4 @@
         reprompt (mk-plain-reprompt "Try again.")]
     (SpeechletResponse/newAskResponse speech reprompt)))
 
-(defintent :HelpRepIntent help)
+(defintent :AMAZON.HelpIntent help)
