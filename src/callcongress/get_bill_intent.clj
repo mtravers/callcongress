@@ -10,7 +10,6 @@
 
 (def last-bill-slot "LAST_BILL")
 
-
 (defn bill-ssml [bill]
   [:speak
    "The bill"
@@ -42,4 +41,5 @@
 (defintent :AMAZON.YesIntent call-rep-intent/call-rep)
 
 (defintent :AMAZON.StopIntent stop)
+(defintent :AMAZON.CancelIntent stop)
   

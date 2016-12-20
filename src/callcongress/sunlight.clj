@@ -6,6 +6,7 @@
             )
   )
 
+;;; TODO replaced by ProPublica? https://propublica.github.io/congress-api-docs
 ;;; TODO for some reason :query-params isn't working
 
 (def api-base "http://congress.api.sunlightfoundation.com")
@@ -54,3 +55,16 @@
       (throw (Error. resp)))
     (:results (json/read-str (:body resp) :key-fn keyword))))
 
+;;; TODO not always right, a zip can have >1 district so >1 rep.
+(defn get-congressman [zip]
+  (first
+   (filter #(= (:chamber %) "house")
+           (get-legislators zip))))
+
+
+(defn say-legislator [legislator]
+  (str
+   (or (:nickname legislator)
+       (:first_name legislator))
+   " "
+   (:last_name legislator)))

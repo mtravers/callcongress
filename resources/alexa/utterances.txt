@@ -1,3 +1,4 @@
+WhatBillsIntent upcoming bills
 WhatBillsIntent what are some upcoming bills
 WhatBillsIntent what bills are upcoming
 WhatBillsIntent what's an upcoming bill
@@ -14,11 +15,14 @@ CallRepIntent call my congressman in the {Chamber}
 CallRepIntent call my congresswoman
 CallRepIntent call my congresswoman in the {Chamber}
 CallRepIntent call my representative
-CallRepIntent call my senator
 CallRepIntent call my rep
 CallSenatorIntent call my senator
-SetZipIntent set my zip to {Zip}
 SetZipIntent set zip to {Zip}
+SetZipIntent set zip code to {Zip}
+SetZipIntent set my zip to {Zip}
+SetZipIntent set my zip code to {Zip}
 SetZipIntent my zip code is {Zip}
+SetZipIntent my zip is {Zip}
+
 
 

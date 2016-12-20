@@ -21,13 +21,11 @@
         legislator (first legislators)]
     (if legislator
       [:speak
-       "You can call"
-       (or (:nickname legislator)
-           (:first_name legislator))
-       (:last_name legislator)
+       "You can call "
+       (sunlight/say-legislator legislator)
+       " at "
        [:say-as {:interpret-as "telephone"} (:phone legislator)]]
-      [:speak "Sorry, I couldn't find a legislator"])))
-
+      [:speak "Sorry, I couldn't find your legislator"])))
 
 (defn call-rep [session session-map]
   (let [bill (sunlight/get-bill (get session-map (keyword last-bill-slot)))

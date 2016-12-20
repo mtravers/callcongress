@@ -17,10 +17,6 @@
 	    "intent": "CallRepIntent",
 	    "slots": [
 		{
-		    "name": "Representative",
-		    "type": "LIST_OF_REPRESENTATIVES"
-		},
-		{
 		    "name": "Chamber",
 		    "type": "LIST_OF_CHAMBERS"
 		}
@@ -28,12 +24,7 @@
 	},
 	{
 	    "intent": "CallSenatorIntent",
-	    "slots": [
-		{
-		    "name": "Representative",
-		    "type": "LIST_OF_REPRESENTATIVES"
-		}
-	    ]
+	    "slots": []
 	},
 	{
 	    "intent": "SetZipIntent",
@@ -57,6 +48,12 @@
 	},
 	{
 	    "intent": "AMAZON.StopIntent"
+	},
+	{
+	    "intent": "AMAZON.CancelIntent"
+	},
+	{
+	    "intent": "AMAZON.HelpIntent"
 	}
     ]
 }
