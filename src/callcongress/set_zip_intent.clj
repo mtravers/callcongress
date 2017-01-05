@@ -32,18 +32,19 @@
 (defn set-zip [session session-map]
   (let [user (user-id session)
         zip (clean-zip (str (get session-map :Zip)))
-        ;; TODO might as well return legislator
-        speech (if zip
-                 (mk-ssml-speech [:speak
-                                  [:s "I have your zip as " [:say-as {:interpret-as "digits"} zip]]
-                                  [:s "Your congressperson is " (sunlight/say-legislator (sunlight/get-congressman zip))]])
-                 (mk-plain-speech "Sorry I couldn't understand."))
-        reprompt (mk-plain-reprompt
-                  (if zip
-                    "Call your representative?"
-                    "Try again"))]
-    (dyn/write-zip user zip)
-    (SpeechletResponse/newAskResponse speech reprompt)))
+        rep (and zip (sunlight/get-congressman zip))]
+    (if zip
+      (let [speech (mk-ssml-speech [:speak
+                                    [:s "I have your zip as " [:say-as {:interpret-as "digits"} zip]]
+                                    (if rep
+                                      [:s "Your congressperson is " (sunlight/say-legislator rep)]
+                                      [:s "I could not find a congressperson for that zip"])])]
+        (dyn/write-zip user zip)
+        ;; Note: I wanted this to be an Ask response that would then prompt to call, but Amazon rejected that idea...
+        (SpeechletResponse/newTellResponse speech))
+      (SpeechletResponse/newAskResponse (mk-plain-speech "Sorry I couldn't understand.")
+                                        (mk-plain-reprompt
+                                         "Try again?")))))
 
 (defintent :SetZipIntent set-zip)
 
